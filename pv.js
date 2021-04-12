@@ -111,10 +111,11 @@ class Pv {
     getPvChatSAI18(stop) {
         const winrate   = this.pvLine[5],
               score     = this.game.my_color === "black" ? this.pvLine[11] : -parseFloat(this.pvLine[11]),
+              scoreLine = this.saiScore ? `, Score: ${score}` : "",
               visits    = stop[1],
               playouts  = stop[3],
               // nps    = stop[4]; // unused
-              name      = `Winrate: ${winrate}%, Score: ${score}, Visits: ${visits}, Playouts: ${playouts}`,
+              name      = `Winrate: ${winrate}%${scoreLine}, Visits: ${visits}, Playouts: ${playouts}`,
               pv = this.PvToGtp(this.pvLine[13]);
 
         return this.createMessage(name, pv);
